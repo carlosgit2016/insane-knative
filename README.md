@@ -51,6 +51,9 @@ Eventing
 - Scalable from just a few events to live streams
 - Custom event pipelines to connect with your own existing systems
 
+### Some Glossary
+- gcloud IAM Policy, IAM policies are attached to the resource to control the access to it and contains the roles and the users/service accounts that are associated with.
+
 ### Use case
 This repo focus on creating a Knative resource on an kind cluster to publish a topic on Gcloud Pub/Sub and trigger a function (service) when the topic is published.
 
@@ -60,4 +63,3 @@ This repo focus on creating a Knative resource on an kind cluster to publish a t
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [knative](https://knative.dev/docs/install/)
-

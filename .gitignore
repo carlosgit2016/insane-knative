@@ -1,0 +1,4 @@
+**\.terraform*
+**\.tool-versions
+**\terraform.tfstate*
+**\google-insane-key.json
