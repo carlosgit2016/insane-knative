@@ -63,3 +63,9 @@ This repo focus on creating a Knative resource on an kind cluster to publish a t
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [knative](https://knative.dev/docs/install/)
+- [Docker]()
+
+### Creating the cluster
+```ssh
+kind create cluster --config cluster/kind-cluster.yml
+```

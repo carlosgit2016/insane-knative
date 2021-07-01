@@ -1,0 +1,23 @@
+# Knative Serving
+
+
+
+# Knative Eventing PUBSUB trigger
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: insane-knative-gcp-pubsub-trigger
+  namespace: default
+spec:
+  broker: dev
+  filter:
+    attributes:
+      source: //pubsub.googleapis.com/knative/topics/testing
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: insane-knative-gcp-pubsub-trigger
+
+# Credentials ?
+# Which "function" is it suppose to trigger ?
