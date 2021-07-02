@@ -1,23 +1,14 @@
 # Knative Serving
-
-
-
-# Knative Eventing PUBSUB trigger
-apiVersion: eventing.knative.dev/v1
-kind: Trigger
-metadata:
-  name: insane-knative-gcp-pubsub-trigger
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata: 
+  name: insane-knative-serving
   namespace: default
 spec:
-  broker: dev
-  filter:
-    attributes:
-      source: //pubsub.googleapis.com/knative/topics/testing
-  subscriber:
-    ref:
-      apiVersion: serving.knative.dev/v1
-      kind: Service
-      name: insane-knative-gcp-pubsub-trigger
-
-# Credentials ?
-# Which "function" is it suppose to trigger ?
+  template:
+    spec:
+      containers:
+        - image: knative-hello-world-go:1.0.0
+          env: 
+            - name: TARGET
+              value: "EFS hello world knative"
