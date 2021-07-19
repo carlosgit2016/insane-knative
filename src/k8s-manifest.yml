@@ -2,13 +2,51 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata: 
-  name: insane-knative-serving
-  namespace: default
+  name: insane-kn
 spec:
   template:
+    metadata: 
+      name: insane-kn-rev1
     spec:
       containers:
         - image: knative-hello-world-go:1.0.0
+          ports:
+            - containerPort: 8080
           env: 
             - name: TARGET
               value: "EFS hello world knative"
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello
+spec:
+  template:
+    metadata:
+      # This is the name of our new "Revision," it must follow the convention {service-name}-{revision-name}
+      name: hello-world
+    spec:
+      containers:
+        - image: gcr.io/knative-samples/helloworld-go
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TARGET
+              value: "World"
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: function
+spec:
+  template:
+    metadata:
+      name: function-rev1
+    spec:
+      containers:
+        - image: gcr.io/knative-samples/helloworld-go
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TARGET
+              value: "World"
